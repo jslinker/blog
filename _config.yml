@@ -11,7 +11,7 @@ email: your-email@domain.com
 description: > # I design and build software to make people's lives
                 just a little bit better. I write about iOS development,
                 Swift, Cocoa, and sometimes art and culture.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "http://josephslinker.com" # the base hostname & protocol for your site
 twitter_username: theslinker
 github_username:  jslinker
