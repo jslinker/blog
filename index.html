@@ -7,7 +7,7 @@ layout: default
   <ul class="post-list">
     {% for post in site.posts limit:50 %}
     <div class="preview-block">
-      <a href="{{ post.url }}" class="preview-link">
+      <a href="{{ post.url | prepend: site.baseurl }}" class="preview-link"><!--"{{ post.url }}"-->
         <div class="padded-content">
           <div class="preview-date"> {{ post.date | date: "%b %-d, %Y" }} </div>
           <div class="preview-title"> {{ post.title }} </div>
