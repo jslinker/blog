@@ -20,7 +20,7 @@
             <ul id="directory">
                 {% for post in site.posts %}
                 <li>
-                    <a id="title" href="{{ post.url }}">
+                    <a id="title" href="{{ site.baseurl }}{{ post.url }}">
                         {{ post.title }}
                     </a>
                     <div id="subtitle">
@@ -63,7 +63,7 @@
             // { coordinate: new mapkit.Coordinate(37.8184493, -122.478409), title: "Golden Gate Bridge", phone: "+1 (415) 921-5858", url: "http://www.goldengatebridge.org" },
             // { coordinate: new mapkit.Coordinate(37.7785538, -122.514035), title: "Cliff House", phone: "+1 (415) 386-3330", url: "http://www.cliffhouse.com/" },
             {% for post in site.posts %}
-                { coordinate: new mapkit.Coordinate({{post.latitude}}, {{post.longitude}}), title: "{{post.title}}", phone: "{{post.preview}}", url: "{{post.url}}" },
+                { coordinate: new mapkit.Coordinate({{post.latitude}}, {{post.longitude}}), title: "{{post.title}}", phone: "{{post.preview}}", url: "{{ site.baseurl }}{{post.url}}" },
             {% endfor %}
         ];
 
