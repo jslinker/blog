@@ -1,117 +1,227 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Joseph Slinker</title>
-  <meta name="description" content="just a little bit better. I write about iOS development, Swift, Cocoa, and sometimes art and culture.
-">
-
-  <link rel="stylesheet" href="/blog/css/main.css">
-  <link rel="canonical" href="http://josephslinker.com/blog/">
-  <link rel="alternate" type="application/rss+xml" title="Joseph Slinker" href="http://josephslinker.com/blog/feed.xml">
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='/css/reset.css'>
+    <link rel='stylesheet' href='/css/main-page.css'>
+    <link rel='stylesheet' href='/css/maps.css'>
+    <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
 </head>
 
-
-  <body>
-
-    <header class="site-header">
-
-  <div class="wrapper">
-
-    <img src="/blog/img/inkt.png" class="site-header-logo"/>
-
-  </div>
-
-</header>
-
-
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="home">
-
-  <ul class="post-list">
-    
-    <div class="preview-block">
-      <a href="/blog/jekyll/update/2016/08/09/welcome-to-jekyll.html" class="preview-link"><!--"/jekyll/update/2016/08/09/welcome-to-jekyll.html"-->
-        <div class="padded-content">
-          <div class="preview-date"> Aug 9, 2016 </div>
-          <div class="preview-title"> Welcome to Jekyll! </div>
-          <div class="preview-body"> You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.
-
- </div>
+<body>
+    <div id="header">
+        <p id="site-title">EVERY LAST MILE</p>
+    </div>
+    <div id="content">
+        <div id="left-panel">
+            <ul id="directory">
+                
+                <li>
+                    <a id="title" href="/2019/05/06/honolulu.html">
+                        Honolulu
+                    </a>
+                    <div id="subtitle">
+                        24 hours of pineapple and beaches
+                    </div>
+                    <p>
+                        <time datetime="2019-05-06">06 May 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/2019/04/24/arches-timelapse.html">
+                        Arches Timelapse
+                    </a>
+                    <div id="subtitle">
+                        217 miles to eastern Utah
+                    </div>
+                    <p>
+                        <time datetime="2019-04-24">24 April 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/2019/03/24/Yellowstone.html">
+                        Yellowstone
+                    </a>
+                    <div id="subtitle">
+                        Our *actual* last hurrah before baby
+                    </div>
+                    <p>
+                        <time datetime="2019-03-24">24 March 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/2019/03/03/mount-timpanogos.html">
+                        Mount Timpanogos
+                    </a>
+                    <div id="subtitle">
+                        A video 9 months in the making
+                    </div>
+                    <p>
+                        <time datetime="2019-03-03">03 March 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/2019/02/10/fifth-water-hot-springs.html">
+                        Fifth Water Hot Springs
+                    </a>
+                    <div id="subtitle">
+                        Snow-covered mountain springs
+                    </div>
+                    <p>
+                        <time datetime="2019-02-10">10 February 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/2019/01/27/stewart-falls.html">
+                        Stewart Falls
+                    </a>
+                    <div id="subtitle">
+                        My favorite short hike in Utah Valley
+                    </div>
+                    <p>
+                        <time datetime="2019-01-27">27 January 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/2019/01/13/las-vegas.html">
+                        Las Vegas
+                    </a>
+                    <div id="subtitle">
+                        The last hurrah before baby comes!
+                    </div>
+                    <p>
+                        <time datetime="2019-01-13">13 January 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/2018/12/30/utah-lake.html">
+                        Utah Lake
+                    </a>
+                    <div id="subtitle">
+                        The pilot episode
+                    </div>
+                    <p>
+                        <time datetime="2018-12-30">30 December 2018</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+            </ul>
+        </div>
+        <div id="vert-divider"></div>
+        <div id="right-panel">
+            <div id="map"></div>
         </div>
     </div>
-    </a>
-    <div class="preview-block">
-      <a href="/blog/jekyll/update/2016/08/08/test-post.html" class="preview-link"><!--"/jekyll/update/2016/08/08/test-post.html"-->
-        <div class="padded-content">
-          <div class="preview-date"> Aug 8, 2016 </div>
-          <div class="preview-title"> This is a test! </div>
-          <div class="preview-body"> You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.
 
- </div>
-        </div>
-    </div>
-    </a>
-  </ul>
+    <script>
+        mapkit.init({
+            authorizationCallback: function (done) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "/services/jwt");
+                xhr.addEventListener("load", function () {
+                    done(this.responseText);
+                });
+                xhr.send();
+            }
+        });
 
-  <p class="rss-subscribe">subscribe <a href="/blog/feed.xml">via RSS</a></p>
+        // Landmarks data
+        var sanFranciscoLandmarks = [
+            // { coordinate: new mapkit.Coordinate(37.7951315, -122.402986), title: "Transamerica Pyramid", phone: "+1-415-983-5420", url: "http://www.transamericapyramidcenter.com/" },
+            // { coordinate: new mapkit.Coordinate(37.7954201, -122.39352), title: "Ferry Building", phone: "+1 (415) 983-8030", url: "http://www.ferrybuildingmarketplace.com" },
+            // { coordinate: new mapkit.Coordinate(37.8083396, -122.415727), title: "Fisherman's Wharf", phone: "+1 (415) 673-3530", url: "http://visitfishermanswharf.com" },
+            // { coordinate: new mapkit.Coordinate(37.8023553, -122.405742), title: "Coit Tower", phone: "+1 (415) 249-0995", url: "http://sfrecpark.org/destination/telegraph-hill-pioneer-park/coit-tower/" },
+            // { coordinate: new mapkit.Coordinate(37.7552305, -122.452624), title: "Sutro Tower", phone: "+1 (415) 681-8850", url: "http://www.sutrotower.com" },
+            // { coordinate: new mapkit.Coordinate(37.779267, -122.419269), title: "City Hall", phone: "+1 (415) 701-2311", url: "http://sfgsa.org/index.aspx?page=1085" },
+            // { coordinate: new mapkit.Coordinate(37.8184493, -122.478409), title: "Golden Gate Bridge", phone: "+1 (415) 921-5858", url: "http://www.goldengatebridge.org" },
+            // { coordinate: new mapkit.Coordinate(37.7785538, -122.514035), title: "Cliff House", phone: "+1 (415) 386-3330", url: "http://www.cliffhouse.com/" },
+            
+                { coordinate: new mapkit.Coordinate(21.367149, -157.939136), title: "Honolulu", phone: "24 hours of pineapple and beaches", url: "/2019/05/06/honolulu.html" },
+            
+                { coordinate: new mapkit.Coordinate(39.482768, -110.511772), title: "Arches Timelapse", phone: "217 miles to eastern Utah", url: "/2019/04/24/arches-timelapse.html" },
+            
+                { coordinate: new mapkit.Coordinate(44.460335, -110.828138), title: "Yellowstone", phone: "Our *actual* last hurrah before baby", url: "/2019/03/24/Yellowstone.html" },
+            
+                { coordinate: new mapkit.Coordinate(40.39085, -111.645943), title: "Mount Timpanogos", phone: "A video 9 months in the making", url: "/2019/03/03/mount-timpanogos.html" },
+            
+                { coordinate: new mapkit.Coordinate(40.08305, -111.31879), title: "Fifth Water Hot Springs", phone: "Snow-covered mountain springs", url: "/2019/02/10/fifth-water-hot-springs.html" },
+            
+                { coordinate: new mapkit.Coordinate(40.386279, -111.604438), title: "Stewart Falls", phone: "My favorite short hike in Utah Valley", url: "/2019/01/27/stewart-falls.html" },
+            
+                { coordinate: new mapkit.Coordinate(36.119222, -115.172688), title: "Las Vegas", phone: "The last hurrah before baby comes!", url: "/2019/01/13/las-vegas.html" },
+            
+                { coordinate: new mapkit.Coordinate(40.362397, -111.886255), title: "Utah Lake", phone: "The pilot episode", url: "/2018/12/30/utah-lake.html" },
+            
+        ];
 
-</div>
+        // Landmark annotation callout delegate
+        var CALLOUT_OFFSET = new DOMPoint(-148, -78);
+        var landmarkAnnotationCallout = {
+            calloutElementForAnnotation: function (annotation) {
+                return calloutForLandmarkAnnotation(annotation);
+            },
 
-      </div>
-    </div>
+            calloutAnchorOffsetForAnnotation: function (annotation, element) {
+                return CALLOUT_OFFSET;
+            },
 
-    <!-- <footer class="site-footer">
+            calloutAppearanceAnimationForAnnotation: function (annotation) {
+                return "scale-and-fadein .4s 0 1 normal cubic-bezier(0.4, 0, 0, 1.5)";
+            }
+        };
 
-  <div class="wrapper">
+        // Landmarks annotations
+        var annotations = sanFranciscoLandmarks.map(function (landmark) {
+            var annotation = new mapkit.MarkerAnnotation(landmark.coordinate, {
+                callout: landmarkAnnotationCallout,
+                color: "#c969e0"
+            });
+            annotation.landmark = landmark;
+            return annotation;
+        });
 
-    <h2 class="footer-heading">Joseph Slinker</h2>
+        var map = new mapkit.Map("map");
+        map.showItems(annotations);
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>Joseph Slinker</li>
-          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
-        </ul>
-      </div>
+        // Landmark annotation custom callout
+        function calloutForLandmarkAnnotation(annotation) {
+            var div = document.createElement("div");
+            div.className = "landmark";
 
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          
-          <li>
-            <a href="https://github.com/jslinker"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
-</span><span class="username">jslinker</span></a>
+            var title = div.appendChild(document.createElement("h1"));
+            title.textContent = annotation.landmark.title;
 
-          </li>
-          
+            var section = div.appendChild(document.createElement("section"));
 
-          
-          <li>
-            <a href="https://twitter.com/theslinker"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
-</span><span class="username">theslinker</span></a>
+            var phone = section.appendChild(document.createElement("p"));
+            phone.className = "phone";
+            phone.textContent = annotation.landmark.phone;
 
-          </li>
-          
-        </ul>
-      </div>
+            var link = section.appendChild(document.createElement("p"));
+            link.className = "homepage";
+            var a = link.appendChild(document.createElement("a"));
+            a.href = annotation.landmark.url;
+            a.textContent = "Read now";
 
-      <div class="footer-col footer-col-3">
-        <p>just a little bit better. I write about iOS development, Swift, Cocoa, and sometimes art and culture.
-</p>
-      </div>
-    </div>
-
-  </div>
-
-</footer>
- -->
-
-  </body>
+            return div;
+        }
+    </script>
+</body>
 
 </html>
