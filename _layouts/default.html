@@ -41,84 +41,157 @@
     </div>
 
     <script>
-        mapkit.init({
-            authorizationCallback: function (done) {
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "/services/jwt");
-                xhr.addEventListener("load", function () {
-                    done(this.responseText);
-                });
-                xhr.send();
-            }
-        });
-
-        // Landmarks data
-        var sanFranciscoLandmarks = [
-            // { coordinate: new mapkit.Coordinate(37.7951315, -122.402986), title: "Transamerica Pyramid", phone: "+1-415-983-5420", url: "http://www.transamericapyramidcenter.com/" },
-            // { coordinate: new mapkit.Coordinate(37.7954201, -122.39352), title: "Ferry Building", phone: "+1 (415) 983-8030", url: "http://www.ferrybuildingmarketplace.com" },
-            // { coordinate: new mapkit.Coordinate(37.8083396, -122.415727), title: "Fisherman's Wharf", phone: "+1 (415) 673-3530", url: "http://visitfishermanswharf.com" },
-            // { coordinate: new mapkit.Coordinate(37.8023553, -122.405742), title: "Coit Tower", phone: "+1 (415) 249-0995", url: "http://sfrecpark.org/destination/telegraph-hill-pioneer-park/coit-tower/" },
-            // { coordinate: new mapkit.Coordinate(37.7552305, -122.452624), title: "Sutro Tower", phone: "+1 (415) 681-8850", url: "http://www.sutrotower.com" },
-            // { coordinate: new mapkit.Coordinate(37.779267, -122.419269), title: "City Hall", phone: "+1 (415) 701-2311", url: "http://sfgsa.org/index.aspx?page=1085" },
-            // { coordinate: new mapkit.Coordinate(37.8184493, -122.478409), title: "Golden Gate Bridge", phone: "+1 (415) 921-5858", url: "http://www.goldengatebridge.org" },
-            // { coordinate: new mapkit.Coordinate(37.7785538, -122.514035), title: "Cliff House", phone: "+1 (415) 386-3330", url: "http://www.cliffhouse.com/" },
-            {% for post in site.posts %}
-                { coordinate: new mapkit.Coordinate({{post.latitude}}, {{post.longitude}}), title: "{{post.title}}", phone: "{{post.preview}}", url: "{{ site.baseurl }}{{post.url}}" },
-            {% endfor %}
-        ];
-
-        // Landmark annotation callout delegate
-        var CALLOUT_OFFSET = new DOMPoint(-148, -78);
-        var landmarkAnnotationCallout = {
-            calloutElementForAnnotation: function (annotation) {
-                return calloutForLandmarkAnnotation(annotation);
+        var map;
+        var currentInfoWindow = null;
+        function initMap() {
+            let mapStyle = [
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
             },
-
-            calloutAnchorOffsetForAnnotation: function (annotation, element) {
-                return CALLOUT_OFFSET;
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
             },
-
-            calloutAppearanceAnimationForAnnotation: function (annotation) {
-                return "scale-and-fadein .4s 0 1 normal cubic-bezier(0.4, 0, 0, 1.5)";
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca5b3'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#746855'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#1f2835'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
             }
-        };
+          ];
 
-        // Landmarks annotations
-        var annotations = sanFranciscoLandmarks.map(function (landmark) {
-            var annotation = new mapkit.MarkerAnnotation(landmark.coordinate, {
-                callout: landmarkAnnotationCallout,
-                color: "#c969e0"
+            var myLatLng = {lat: -25.363, lng: 131.044};
+            var title = "";
+                {% for post in site.posts limit:1 %}
+            myLatLng.lat = {{post.latitude}};
+            myLatLng.lng = {{post.longitude}};
+            title = "{{post.title}}";
+                {% endfor %}
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: myLatLng,
+                styles: mapStyle
             });
-            annotation.landmark = landmark;
-            return annotation;
-        });
 
-        var map = new mapkit.Map("map");
-        map.showItems(annotations);
+            var posts = [];
+            {% for post in site.posts %}
+            posts.push({
+                title: "{{post.title}}",
+                preview: "{{post.preview}}",
+                lat: {{post.latitude}},
+                lng: {{post.longitude}},
+                url: "{{site.baseurl}}{{post.url}}"
+            });
+            {% endfor %}
 
-        // Landmark annotation custom callout
-        function calloutForLandmarkAnnotation(annotation) {
-            var div = document.createElement("div");
-            div.className = "landmark";
+            var goldStar = {
+                path: 'M15,31 C5.66666667,25.487991 1,20.1546577 1,15 C1,7.2680135 7.2680135,1 15,1 C22.7319865,1 29,7.2680135 29,15 C29,20.1546577 24.3333333,25.487991 15,31 Z M15,18 C17.209139,18 19,16.209139 19,14 C19,11.790861 17.209139,10 15,10 C12.790861,10 11,11.790861 11,14 C11,16.209139 12.790861,18 15,18 Z',
+                fillColor: "#FFFFFF",
+                fillOpacity: 0.8,
+                scale: 0.75,
+                strokeColor: "#FFFFFF",
+                strokeWeight: 1
+            }
 
-            var title = div.appendChild(document.createElement("h1"));
-            title.textContent = annotation.landmark.title;
+            for (i in posts) {
+                let post = posts[i];
+                let latLng = {
+                    lat: post.lat,
+                    lng: post.lng
+                }
+                title = post.title;
+                let marker = new google.maps.Marker({
+                    position: latLng,
+                    icon: goldStar,
+                    map: map
+                });
 
-            var section = div.appendChild(document.createElement("section"));
+                let contentString = `<div class="landmark" style=""><h1>${post.title}</h1><section><p class="phone">${post.preview}</p><p class="homepage"><a href="${post.url}">Read now</a></p></section></div>`;
 
-            var phone = section.appendChild(document.createElement("p"));
-            phone.className = "phone";
-            phone.textContent = annotation.landmark.phone;
+                let infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
 
-            var link = section.appendChild(document.createElement("p"));
-            link.className = "homepage";
-            var a = link.appendChild(document.createElement("a"));
-            a.href = annotation.landmark.url;
-            a.textContent = "Read now";
-
-            return div;
+                marker.addListener('click', () => {
+                    if (currentInfoWindow) {
+                        currentInfoWindow.close();
+                    }
+                    infowindow.open(map, marker);
+                    currentInfoWindow = infowindow;
+                });
+            }
         }
     </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63CNm-zvUpJSoCvKIofJjTJbMDQ3VglU&callback=initMap">
+        </script>
 </body>
 
 </html>
