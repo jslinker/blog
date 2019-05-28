@@ -18,7 +18,20 @@
             <ul id="directory">
                 
                 <li>
-                    <a id="title" href="/2019/05/06/honolulu.html">
+                    <a id="title" href="/blog/2019/05/27/the-lost-palace.html">
+                        The Lost Palace
+                    </a>
+                    <div id="subtitle">
+                        Lost and pregnant in a bamboo forest
+                    </div>
+                    <p>
+                        <time datetime="2019-05-27">27 May 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/blog/2019/05/06/honolulu.html">
                         Honolulu
                     </a>
                     <div id="subtitle">
@@ -31,7 +44,7 @@
                 </li>
                 
                 <li>
-                    <a id="title" href="/2019/04/24/arches-timelapse.html">
+                    <a id="title" href="/blog/2019/04/24/arches-timelapse.html">
                         Arches Timelapse
                     </a>
                     <div id="subtitle">
@@ -44,7 +57,7 @@
                 </li>
                 
                 <li>
-                    <a id="title" href="/2019/03/24/Yellowstone.html">
+                    <a id="title" href="/blog/2019/03/24/Yellowstone.html">
                         Yellowstone
                     </a>
                     <div id="subtitle">
@@ -57,7 +70,7 @@
                 </li>
                 
                 <li>
-                    <a id="title" href="/2019/03/03/mount-timpanogos.html">
+                    <a id="title" href="/blog/2019/03/03/mount-timpanogos.html">
                         Mount Timpanogos
                     </a>
                     <div id="subtitle">
@@ -70,7 +83,7 @@
                 </li>
                 
                 <li>
-                    <a id="title" href="/2019/02/10/fifth-water-hot-springs.html">
+                    <a id="title" href="/blog/2019/02/10/fifth-water-hot-springs.html">
                         Fifth Water Hot Springs
                     </a>
                     <div id="subtitle">
@@ -83,7 +96,7 @@
                 </li>
                 
                 <li>
-                    <a id="title" href="/2019/01/27/stewart-falls.html">
+                    <a id="title" href="/blog/2019/01/27/stewart-falls.html">
                         Stewart Falls
                     </a>
                     <div id="subtitle">
@@ -96,7 +109,7 @@
                 </li>
                 
                 <li>
-                    <a id="title" href="/2019/01/13/las-vegas.html">
+                    <a id="title" href="/blog/2019/01/13/las-vegas.html">
                         Las Vegas
                     </a>
                     <div id="subtitle">
@@ -109,7 +122,7 @@
                 </li>
                 
                 <li>
-                    <a id="title" href="/2018/12/30/utah-lake.html">
+                    <a id="title" href="/blog/2018/12/30/utah-lake.html">
                         Utah Lake
                     </a>
                     <div id="subtitle">
@@ -217,13 +230,13 @@
             var myLatLng = {lat: -25.363, lng: 131.044};
             var title = "";
                 
-            myLatLng.lat = 21.367149;
-            myLatLng.lng = -157.939136;
-            title = "Honolulu";
+            myLatLng.lat = 21.365606;
+            myLatLng.lng = -157.793585;
+            title = "The Lost Palace";
                 
 
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                zoom: 10,
                 center: myLatLng,
                 styles: mapStyle
             });
@@ -231,11 +244,19 @@
             var posts = [];
             
             posts.push({
+                title: "The Lost Palace",
+                preview: "Lost and pregnant in a bamboo forest",
+                lat: 21.365606,
+                lng: -157.793585,
+                url: "/blog/2019/05/27/the-lost-palace.html"
+            });
+            
+            posts.push({
                 title: "Honolulu",
                 preview: "24 hours of pineapple and beaches",
                 lat: 21.367149,
                 lng: -157.939136,
-                url: "/2019/05/06/honolulu.html"
+                url: "/blog/2019/05/06/honolulu.html"
             });
             
             posts.push({
@@ -243,7 +264,7 @@
                 preview: "217 miles to eastern Utah",
                 lat: 39.482768,
                 lng: -110.511772,
-                url: "/2019/04/24/arches-timelapse.html"
+                url: "/blog/2019/04/24/arches-timelapse.html"
             });
             
             posts.push({
@@ -251,7 +272,7 @@
                 preview: "Our *actual* last hurrah before baby",
                 lat: 44.460335,
                 lng: -110.828138,
-                url: "/2019/03/24/Yellowstone.html"
+                url: "/blog/2019/03/24/Yellowstone.html"
             });
             
             posts.push({
@@ -259,7 +280,7 @@
                 preview: "A video 9 months in the making",
                 lat: 40.39085,
                 lng: -111.645943,
-                url: "/2019/03/03/mount-timpanogos.html"
+                url: "/blog/2019/03/03/mount-timpanogos.html"
             });
             
             posts.push({
@@ -267,7 +288,7 @@
                 preview: "Snow-covered mountain springs",
                 lat: 40.08305,
                 lng: -111.31879,
-                url: "/2019/02/10/fifth-water-hot-springs.html"
+                url: "/blog/2019/02/10/fifth-water-hot-springs.html"
             });
             
             posts.push({
@@ -275,7 +296,7 @@
                 preview: "My favorite short hike in Utah Valley",
                 lat: 40.386279,
                 lng: -111.604438,
-                url: "/2019/01/27/stewart-falls.html"
+                url: "/blog/2019/01/27/stewart-falls.html"
             });
             
             posts.push({
@@ -283,7 +304,7 @@
                 preview: "The last hurrah before baby comes!",
                 lat: 36.119222,
                 lng: -115.172688,
-                url: "/2019/01/13/las-vegas.html"
+                url: "/blog/2019/01/13/las-vegas.html"
             });
             
             posts.push({
@@ -291,7 +312,7 @@
                 preview: "The pilot episode",
                 lat: 40.362397,
                 lng: -111.886255,
-                url: "/2018/12/30/utah-lake.html"
+                url: "/blog/2018/12/30/utah-lake.html"
             });
             
 
