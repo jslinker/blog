@@ -152,10 +152,10 @@
 
             var goldStar = {
                 path: 'M15,31 C5.66666667,25.487991 1,20.1546577 1,15 C1,7.2680135 7.2680135,1 15,1 C22.7319865,1 29,7.2680135 29,15 C29,20.1546577 24.3333333,25.487991 15,31 Z M15,18 C17.209139,18 19,16.209139 19,14 C19,11.790861 17.209139,10 15,10 C12.790861,10 11,11.790861 11,14 C11,16.209139 12.790861,18 15,18 Z',
-                fillColor: "#FFFFFF",
-                fillOpacity: 0.8,
+                fillColor: "#C92237",
+                fillOpacity: 1,
                 scale: 0.75,
-                strokeColor: "#FFFFFF",
+                strokeColor: "#A21628",
                 strokeWeight: 1
             }
 
@@ -185,6 +185,11 @@
                     infowindow.open(map, marker);
                     currentInfoWindow = infowindow;
                 });
+
+                if (i == 0) {
+                    infowindow.open(map, marker);
+                    currentInfoWindow = infowindow;
+                }
             }
         }
     </script>
