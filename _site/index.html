@@ -18,6 +18,19 @@
             <ul id="directory">
                 
                 <li>
+                    <a id="title" href="/blog/2019/06/09/mac-pro-hands-on.html">
+                        Mac Pro Hands On
+                    </a>
+                    <div id="subtitle">
+                        Up close with the $12,000 Mac
+                    </div>
+                    <p>
+                        <time datetime="2019-06-09">09 June 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
                     <a id="title" href="/blog/2019/06/02/the-mormon-side-of-hawaii.html">
                         The Mormon Side Of Hawaii
                     </a>
@@ -243,9 +256,9 @@
             var myLatLng = {lat: -25.363, lng: 131.044};
             var title = "";
                 
-            myLatLng.lat = 21.638822;
-            myLatLng.lng = -157.919964;
-            title = "The Mormon Side Of Hawaii";
+            myLatLng.lat = 37.330386;
+            myLatLng.lng = -121.890059;
+            title = "Mac Pro Hands On";
                 
 
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -255,6 +268,14 @@
             });
 
             var posts = [];
+            
+            posts.push({
+                title: "Mac Pro Hands On",
+                preview: "Up close with the $12,000 Mac",
+                lat: 37.330386,
+                lng: -121.890059,
+                url: "/blog/2019/06/09/mac-pro-hands-on.html"
+            });
             
             posts.push({
                 title: "The Mormon Side Of Hawaii",
