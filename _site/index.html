@@ -18,6 +18,19 @@
             <ul id="directory">
                 
                 <li>
+                    <a id="title" href="/blog/2019/07/04/flooding-in-maui.html">
+                        Flooding In Maui
+                    </a>
+                    <div id="subtitle">
+                        Getting flooded in Maui
+                    </div>
+                    <p>
+                        <time datetime="2019-07-04">04 July 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
                     <a id="title" href="/blog/2019/06/09/mac-pro-hands-on.html">
                         Mac Pro Hands On
                     </a>
@@ -256,9 +269,9 @@
             var myLatLng = {lat: -25.363, lng: 131.044};
             var title = "";
                 
-            myLatLng.lat = 37.330386;
-            myLatLng.lng = -121.890059;
-            title = "Mac Pro Hands On";
+            myLatLng.lat = 20.910613;
+            myLatLng.lng = -156.240287;
+            title = "Flooding In Maui";
                 
 
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -268,6 +281,14 @@
             });
 
             var posts = [];
+            
+            posts.push({
+                title: "Flooding In Maui",
+                preview: "Getting flooded in Maui",
+                lat: 20.910613,
+                lng: -156.240287,
+                url: "/blog/2019/07/04/flooding-in-maui.html"
+            });
             
             posts.push({
                 title: "Mac Pro Hands On",
