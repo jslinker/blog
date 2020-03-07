@@ -18,6 +18,45 @@
             <ul id="directory">
                 
                 <li>
+                    <a id="title" href="/blog/2020/03/07/galaxys-edge-in-4k.html">
+                        Galaxys Edge In 4k
+                    </a>
+                    <div id="subtitle">
+                        Galaxy's Edge in 4k
+                    </div>
+                    <p>
+                        <time datetime="2020-03-07">07 March 2020</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/blog/2020/02/29/laie-in-60-seconds.html">
+                        Laie In 60 Seconds
+                    </a>
+                    <div id="subtitle">
+                        La'ie Hawaii in 60 Seconds
+                    </div>
+                    <p>
+                        <time datetime="2020-02-29">29 February 2020</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/blog/2020/02/15/paris-in-60-seconds.html">
+                        Paris In 60 Seconds
+                    </a>
+                    <div id="subtitle">
+                        Paris in 60 Seconds
+                    </div>
+                    <p>
+                        <time datetime="2020-02-15">15 February 2020</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
                     <a id="title" href="/blog/2019/11/20/european-drone-safari.html">
                         European Drone Safari
                     </a>
@@ -295,9 +334,9 @@
             var myLatLng = {lat: -25.363, lng: 131.044};
             var title = "";
                 
-            myLatLng.lat = 49.083506;
-            myLatLng.lng = 1.483729;
-            title = "European Drone Safari";
+            myLatLng.lat = 33.814396;
+            myLatLng.lng = -117.92254;
+            title = "Galaxys Edge In 4k";
                 
 
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -307,6 +346,30 @@
             });
 
             var posts = [];
+            
+            posts.push({
+                title: "Galaxys Edge In 4k",
+                preview: "Galaxy's Edge in 4k",
+                lat: 33.814396,
+                lng: -117.92254,
+                url: "/blog/2020/03/07/galaxys-edge-in-4k.html"
+            });
+            
+            posts.push({
+                title: "Laie In 60 Seconds",
+                preview: "La'ie Hawaii in 60 Seconds",
+                lat: 21.642806,
+                lng: -157.922437,
+                url: "/blog/2020/02/29/laie-in-60-seconds.html"
+            });
+            
+            posts.push({
+                title: "Paris In 60 Seconds",
+                preview: "Paris in 60 Seconds",
+                lat: 48.858293,
+                lng: 2.294537,
+                url: "/blog/2020/02/15/paris-in-60-seconds.html"
+            });
             
             posts.push({
                 title: "European Drone Safari",
