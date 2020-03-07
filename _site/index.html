@@ -18,6 +18,32 @@
             <ul id="directory">
                 
                 <li>
+                    <a id="title" href="/blog/2019/11/20/european-drone-safari.html">
+                        European Drone Safari
+                    </a>
+                    <div id="subtitle">
+                        European Drone Safari
+                    </div>
+                    <p>
+                        <time datetime="2019-11-20">20 November 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
+                    <a id="title" href="/blog/2019/09/14/every-last-arch.html">
+                        Every Last Arch
+                    </a>
+                    <div id="subtitle">
+                        Every Arch in the Park
+                    </div>
+                    <p>
+                        <time datetime="2019-09-14">14 September 2019</time>
+                    </p>
+                    <div id="divider"></div>
+                </li>
+                
+                <li>
                     <a id="title" href="/blog/2019/07/04/flooding-in-maui.html">
                         Flooding In Maui
                     </a>
@@ -269,9 +295,9 @@
             var myLatLng = {lat: -25.363, lng: 131.044};
             var title = "";
                 
-            myLatLng.lat = 20.910613;
-            myLatLng.lng = -156.240287;
-            title = "Flooding In Maui";
+            myLatLng.lat = 49.083506;
+            myLatLng.lng = 1.483729;
+            title = "European Drone Safari";
                 
 
             var map = new google.maps.Map(document.getElementById('map'), {
@@ -281,6 +307,22 @@
             });
 
             var posts = [];
+            
+            posts.push({
+                title: "European Drone Safari",
+                preview: "European Drone Safari",
+                lat: 49.083506,
+                lng: 1.483729,
+                url: "/blog/2019/11/20/european-drone-safari.html"
+            });
+            
+            posts.push({
+                title: "Every Last Arch",
+                preview: "Every Arch in the Park",
+                lat: 38.740209,
+                lng: -109.571726,
+                url: "/blog/2019/09/14/every-last-arch.html"
+            });
             
             posts.push({
                 title: "Flooding In Maui",
