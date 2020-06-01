@@ -247,290 +247,205 @@
     </div>
 
     <script>
-        var map;
-        var currentInfoWindow = null;
-        function initMap() {
-            let mapStyle = [
-            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-            {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [{color: '#263c3f'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#6b9a76'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{color: '#38414e'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#212a37'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#9ca5b3'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry',
-              stylers: [{color: '#746855'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#1f2835'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#f3d19c'}]
-            },
-            {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [{color: '#2f3948'}]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [{color: '#17263c'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#515c6d'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [{color: '#17263c'}]
-            }
-          ];
-
-            var myLatLng = {lat: -25.363, lng: 131.044};
-            var title = "";
-                
-            myLatLng.lat = 33.814396;
-            myLatLng.lng = -117.92254;
-            title = "Galaxys Edge In 4k";
-                
-
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: myLatLng,
-                styles: mapStyle
-            });
-
-            var posts = [];
-            
-            posts.push({
-                title: "Galaxys Edge In 4k",
-                preview: "Galaxy's Edge in 4k",
-                lat: 33.814396,
-                lng: -117.92254,
-                url: "/blog/2020/03/07/galaxys-edge-in-4k.html"
-            });
-            
-            posts.push({
-                title: "Laie In 60 Seconds",
-                preview: "La'ie Hawaii in 60 Seconds",
-                lat: 21.642806,
-                lng: -157.922437,
-                url: "/blog/2020/02/29/laie-in-60-seconds.html"
-            });
-            
-            posts.push({
-                title: "Paris In 60 Seconds",
-                preview: "Paris in 60 Seconds",
-                lat: 48.858293,
-                lng: 2.294537,
-                url: "/blog/2020/02/15/paris-in-60-seconds.html"
-            });
-            
-            posts.push({
-                title: "European Drone Safari",
-                preview: "European Drone Safari",
-                lat: 49.083506,
-                lng: 1.483729,
-                url: "/blog/2019/11/20/european-drone-safari.html"
-            });
-            
-            posts.push({
-                title: "Every Last Arch",
-                preview: "Every Arch in the Park",
-                lat: 38.740209,
-                lng: -109.571726,
-                url: "/blog/2019/09/14/every-last-arch.html"
-            });
-            
-            posts.push({
-                title: "Flooding In Maui",
-                preview: "Getting flooded in Maui",
-                lat: 20.910613,
-                lng: -156.240287,
-                url: "/blog/2019/07/04/flooding-in-maui.html"
-            });
-            
-            posts.push({
-                title: "Mac Pro Hands On",
-                preview: "Up close with the $12,000 Mac",
-                lat: 37.330386,
-                lng: -121.890059,
-                url: "/blog/2019/06/09/mac-pro-hands-on.html"
-            });
-            
-            posts.push({
-                title: "The Mormon Side Of Hawaii",
-                preview: "Where church and island meet",
-                lat: 21.638822,
-                lng: -157.919964,
-                url: "/blog/2019/06/02/the-mormon-side-of-hawaii.html"
-            });
-            
-            posts.push({
-                title: "The Lost Palace",
-                preview: "Lost and pregnant in a bamboo forest",
-                lat: 21.365606,
-                lng: -157.793585,
-                url: "/blog/2019/05/27/the-lost-palace.html"
-            });
-            
-            posts.push({
-                title: "Honolulu",
-                preview: "24 hours of pineapple and beaches",
-                lat: 21.367149,
-                lng: -157.939136,
-                url: "/blog/2019/05/06/honolulu.html"
-            });
-            
-            posts.push({
-                title: "Arches Timelapse",
-                preview: "217 miles to eastern Utah",
-                lat: 39.482768,
-                lng: -110.511772,
-                url: "/blog/2019/04/24/arches-timelapse.html"
-            });
-            
-            posts.push({
-                title: "Yellowstone",
-                preview: "Our *actual* last hurrah before baby",
-                lat: 44.460335,
-                lng: -110.828138,
-                url: "/blog/2019/03/24/Yellowstone.html"
-            });
-            
-            posts.push({
-                title: "Mount Timpanogos",
-                preview: "A video 9 months in the making",
-                lat: 40.39085,
-                lng: -111.645943,
-                url: "/blog/2019/03/03/mount-timpanogos.html"
-            });
-            
-            posts.push({
-                title: "Fifth Water Hot Springs",
-                preview: "Snow-covered mountain springs",
-                lat: 40.08305,
-                lng: -111.31879,
-                url: "/blog/2019/02/10/fifth-water-hot-springs.html"
-            });
-            
-            posts.push({
-                title: "Stewart Falls",
-                preview: "My favorite short hike in Utah Valley",
-                lat: 40.386279,
-                lng: -111.604438,
-                url: "/blog/2019/01/27/stewart-falls.html"
-            });
-            
-            posts.push({
-                title: "Las Vegas",
-                preview: "The last hurrah before baby comes!",
-                lat: 36.119222,
-                lng: -115.172688,
-                url: "/blog/2019/01/13/las-vegas.html"
-            });
-            
-            posts.push({
-                title: "Utah Lake",
-                preview: "The pilot episode",
-                lat: 40.362397,
-                lng: -111.886255,
-                url: "/blog/2018/12/30/utah-lake.html"
-            });
-            
-
-            var goldStar = {
-                path: 'M15,31 C5.66666667,25.487991 1,20.1546577 1,15 C1,7.2680135 7.2680135,1 15,1 C22.7319865,1 29,7.2680135 29,15 C29,20.1546577 24.3333333,25.487991 15,31 Z M15,18 C17.209139,18 19,16.209139 19,14 C19,11.790861 17.209139,10 15,10 C12.790861,10 11,11.790861 11,14 C11,16.209139 12.790861,18 15,18 Z',
-                fillColor: "#C92237",
-                fillOpacity: 1,
-                scale: 0.75,
-                strokeColor: "#A21628",
-                strokeWeight: 1
-            }
-
-            for (i in posts) {
-                let post = posts[i];
-                let latLng = {
-                    lat: post.lat,
-                    lng: post.lng
-                }
-                title = post.title;
-                let marker = new google.maps.Marker({
-                    position: latLng,
-                    icon: goldStar,
-                    map: map
-                });
-
-                let contentString = `<div class="landmark" style=""><h1>${post.title}</h1><section><p class="phone">${post.preview}</p><p class="homepage"><a href="${post.url}">Read now</a></p></section></div>`;
-
-                let infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-
-                marker.addListener('click', () => {
-                    if (currentInfoWindow) {
-                        currentInfoWindow.close();
-                    }
-                    infowindow.open(map, marker);
-                    currentInfoWindow = infowindow;
-                });
-
-                if (i == 0) {
-                    infowindow.open(map, marker);
-                    currentInfoWindow = infowindow;
-                }
-            }
+      mapkit.init({
+        authorizationCallback: function(done) {
+            done('eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJCM1o4SkdXNDkifQ.eyJpc3MiOiJYSlBKUk1NNFAzIiwiaWF0IjoxNTkxMDI1NTYzLCJleHAiOjI1MjU3ODcxNjN9.5aCx4jmj22FVtWrST1q0R2nmKbpQBV4VhlHoAJMUexvsEYpZAipCSHe_wp4qGWMvbfvU737VMfrBnVS-LsqakA');
         }
-    </script>
+      });
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63CNm-zvUpJSoCvKIofJjTJbMDQ3VglU&callback=initMap">
-        </script>
+      var focus = {lat: -25.363, lng: 131.044};
+      var title = "";
+          
+      focus.lat = 33.814396;
+      focus.lng = -117.92254;
+      title = "Galaxys Edge In 4k";
+          
+
+      var Cupertino = new mapkit.CoordinateRegion(
+        new mapkit.Coordinate(focus.lat, focus.lng),
+        new mapkit.CoordinateSpan(0.167647972, 0.354985255)
+      );
+
+      // Create the map and style it
+      var map = new mapkit.Map("map");
+      map.region = Cupertino;
+      map.colorScheme = mapkit.Map.ColorSchemes.Dark;
+      map.showsUserLocation = false;
+      map.showsUserLocationControl = true;
+
+
+      var posts = [];
+      
+      posts.push({
+          title: "Galaxys Edge In 4k",
+          preview: "Galaxy's Edge in 4k",
+          lat: 33.814396,
+          lng: -117.92254,
+          url: "/blog/2020/03/07/galaxys-edge-in-4k.html"
+      });
+      
+      posts.push({
+          title: "Laie In 60 Seconds",
+          preview: "La'ie Hawaii in 60 Seconds",
+          lat: 21.642806,
+          lng: -157.922437,
+          url: "/blog/2020/02/29/laie-in-60-seconds.html"
+      });
+      
+      posts.push({
+          title: "Paris In 60 Seconds",
+          preview: "Paris in 60 Seconds",
+          lat: 48.858293,
+          lng: 2.294537,
+          url: "/blog/2020/02/15/paris-in-60-seconds.html"
+      });
+      
+      posts.push({
+          title: "European Drone Safari",
+          preview: "European Drone Safari",
+          lat: 49.083506,
+          lng: 1.483729,
+          url: "/blog/2019/11/20/european-drone-safari.html"
+      });
+      
+      posts.push({
+          title: "Every Last Arch",
+          preview: "Every Arch in the Park",
+          lat: 38.740209,
+          lng: -109.571726,
+          url: "/blog/2019/09/14/every-last-arch.html"
+      });
+      
+      posts.push({
+          title: "Flooding In Maui",
+          preview: "Getting flooded in Maui",
+          lat: 20.910613,
+          lng: -156.240287,
+          url: "/blog/2019/07/04/flooding-in-maui.html"
+      });
+      
+      posts.push({
+          title: "Mac Pro Hands On",
+          preview: "Up close with the $12,000 Mac",
+          lat: 37.330386,
+          lng: -121.890059,
+          url: "/blog/2019/06/09/mac-pro-hands-on.html"
+      });
+      
+      posts.push({
+          title: "The Mormon Side Of Hawaii",
+          preview: "Where church and island meet",
+          lat: 21.638822,
+          lng: -157.919964,
+          url: "/blog/2019/06/02/the-mormon-side-of-hawaii.html"
+      });
+      
+      posts.push({
+          title: "The Lost Palace",
+          preview: "Lost and pregnant in a bamboo forest",
+          lat: 21.365606,
+          lng: -157.793585,
+          url: "/blog/2019/05/27/the-lost-palace.html"
+      });
+      
+      posts.push({
+          title: "Honolulu",
+          preview: "24 hours of pineapple and beaches",
+          lat: 21.367149,
+          lng: -157.939136,
+          url: "/blog/2019/05/06/honolulu.html"
+      });
+      
+      posts.push({
+          title: "Arches Timelapse",
+          preview: "217 miles to eastern Utah",
+          lat: 39.482768,
+          lng: -110.511772,
+          url: "/blog/2019/04/24/arches-timelapse.html"
+      });
+      
+      posts.push({
+          title: "Yellowstone",
+          preview: "Our *actual* last hurrah before baby",
+          lat: 44.460335,
+          lng: -110.828138,
+          url: "/blog/2019/03/24/Yellowstone.html"
+      });
+      
+      posts.push({
+          title: "Mount Timpanogos",
+          preview: "A video 9 months in the making",
+          lat: 40.39085,
+          lng: -111.645943,
+          url: "/blog/2019/03/03/mount-timpanogos.html"
+      });
+      
+      posts.push({
+          title: "Fifth Water Hot Springs",
+          preview: "Snow-covered mountain springs",
+          lat: 40.08305,
+          lng: -111.31879,
+          url: "/blog/2019/02/10/fifth-water-hot-springs.html"
+      });
+      
+      posts.push({
+          title: "Stewart Falls",
+          preview: "My favorite short hike in Utah Valley",
+          lat: 40.386279,
+          lng: -111.604438,
+          url: "/blog/2019/01/27/stewart-falls.html"
+      });
+      
+      posts.push({
+          title: "Las Vegas",
+          preview: "The last hurrah before baby comes!",
+          lat: 36.119222,
+          lng: -115.172688,
+          url: "/blog/2019/01/13/las-vegas.html"
+      });
+      
+      posts.push({
+          title: "Utah Lake",
+          preview: "The pilot episode",
+          lat: 40.362397,
+          lng: -111.886255,
+          url: "/blog/2018/12/30/utah-lake.html"
+      });
+      
+
+      for (i in posts) {
+        // Grab the relevant info from the post
+        let post = posts[i];
+        let latLng = {
+            lat: post.lat,
+            lng: post.lng
+        }
+        title = post.title;
+
+        // Create the callout
+        const callout = {
+          calloutElementForAnnotation: (annotation) => {
+            let div = document.createElement('div');
+            div.className = 'landmark';
+            div.innerHTML = `<h1>${post.title}</h1><section><p class="phone">${post.preview}</p><p class="homepage"><a href="${post.url}">Read now</a></p></section>`;
+            return div;
+          }
+        }
+
+        // Create the annotation
+        const coordinates = new mapkit.Coordinate(latLng.lat, latLng.lng);
+        const annotation = new mapkit.MarkerAnnotation(coordinates, {
+          color: '#C92237',
+          title: post.title,
+          subtitle: post.preview,
+          callout: callout
+        });
+
+        map.addAnnotation(annotation);
+      }
+
+      map.annotations[0].selected = true;
+    </script>
 </body>
 
 </html>

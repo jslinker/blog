@@ -18,22 +18,23 @@ html, body {
 
         .landmark {
             width: 250px;
-            padding: 7px 0 0 0;
-            background: rgba(247, 247, 247, 0.75);
+            padding: 7px 0;
+            background: #11161E;
             border-radius: 5px;
             box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.29);
             font-family: Helvetica, Arial, sans-serif;
+            font-weight: 300;
             -webkit-transform-origin: 0 10px;
             transform-origin: 0 10px;
         }
 
         .landmark h1 {
             margin-top: 0;
-            padding: 5px 15px;
+            padding: 5px 15px 5px 15px;
             background: #C92237;
             color: rgba(255, 255, 255, 0.9);
             font-size: 16px;
-            font-weight: 300;
+            font-weight: 700;
         }
 
         .landmark section {
@@ -42,20 +43,8 @@ html, body {
         }
 
         .landmark section p {
-            margin: 5px 0;
-        }
-
-        .landmark:after {
-            content: "";
-            position: absolute;
-            top: 7px;
-            left: -13px;
-            width: 0;
-            height: 0;
-            margin-bottom: -13px;
-            border-right: 13px solid #2aaef5;
-            border-top: 13px solid rgba(0, 0, 0, 0);
-            border-bottom: 13px solid rgba(0, 0, 0, 0);
+            margin: 5px 0px 0px 2px;
+            line-height: 110%;
         }
 
         @-webkit-keyframes scale-and-fadein {

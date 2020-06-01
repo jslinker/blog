@@ -41,162 +41,77 @@
     </div>
 
     <script>
-        var map;
-        var currentInfoWindow = null;
-        function initMap() {
-            let mapStyle = [
-            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-            {
-              featureType: 'administrative.locality',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'geometry',
-              stylers: [{color: '#263c3f'}]
-            },
-            {
-              featureType: 'poi.park',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#6b9a76'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry',
-              stylers: [{color: '#38414e'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#212a37'}]
-            },
-            {
-              featureType: 'road',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#9ca5b3'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry',
-              stylers: [{color: '#746855'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'geometry.stroke',
-              stylers: [{color: '#1f2835'}]
-            },
-            {
-              featureType: 'road.highway',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#f3d19c'}]
-            },
-            {
-              featureType: 'transit',
-              elementType: 'geometry',
-              stylers: [{color: '#2f3948'}]
-            },
-            {
-              featureType: 'transit.station',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#d59563'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'geometry',
-              stylers: [{color: '#17263c'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.fill',
-              stylers: [{color: '#515c6d'}]
-            },
-            {
-              featureType: 'water',
-              elementType: 'labels.text.stroke',
-              stylers: [{color: '#17263c'}]
-            }
-          ];
-
-            var myLatLng = {lat: -25.363, lng: 131.044};
-            var title = "";
-                {% for post in site.posts limit:1 %}
-            myLatLng.lat = {{post.latitude}};
-            myLatLng.lng = {{post.longitude}};
-            title = "{{post.title}}";
-                {% endfor %}
-
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: myLatLng,
-                styles: mapStyle
-            });
-
-            var posts = [];
-            {% for post in site.posts %}
-            posts.push({
-                title: "{{post.title}}",
-                preview: "{{post.preview}}",
-                lat: {{post.latitude}},
-                lng: {{post.longitude}},
-                url: "{{site.baseurl}}{{post.url}}"
-            });
-            {% endfor %}
-
-            var goldStar = {
-                path: 'M15,31 C5.66666667,25.487991 1,20.1546577 1,15 C1,7.2680135 7.2680135,1 15,1 C22.7319865,1 29,7.2680135 29,15 C29,20.1546577 24.3333333,25.487991 15,31 Z M15,18 C17.209139,18 19,16.209139 19,14 C19,11.790861 17.209139,10 15,10 C12.790861,10 11,11.790861 11,14 C11,16.209139 12.790861,18 15,18 Z',
-                fillColor: "#C92237",
-                fillOpacity: 1,
-                scale: 0.75,
-                strokeColor: "#A21628",
-                strokeWeight: 1
-            }
-
-            for (i in posts) {
-                let post = posts[i];
-                let latLng = {
-                    lat: post.lat,
-                    lng: post.lng
-                }
-                title = post.title;
-                let marker = new google.maps.Marker({
-                    position: latLng,
-                    icon: goldStar,
-                    map: map
-                });
-
-                let contentString = `<div class="landmark" style=""><h1>${post.title}</h1><section><p class="phone">${post.preview}</p><p class="homepage"><a href="${post.url}">Read now</a></p></section></div>`;
-
-                let infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-
-                marker.addListener('click', () => {
-                    if (currentInfoWindow) {
-                        currentInfoWindow.close();
-                    }
-                    infowindow.open(map, marker);
-                    currentInfoWindow = infowindow;
-                });
-
-                if (i == 0) {
-                    infowindow.open(map, marker);
-                    currentInfoWindow = infowindow;
-                }
-            }
+      mapkit.init({
+        authorizationCallback: function(done) {
+            done('eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjJCM1o4SkdXNDkifQ.eyJpc3MiOiJYSlBKUk1NNFAzIiwiaWF0IjoxNTkxMDI1NTYzLCJleHAiOjI1MjU3ODcxNjN9.5aCx4jmj22FVtWrST1q0R2nmKbpQBV4VhlHoAJMUexvsEYpZAipCSHe_wp4qGWMvbfvU737VMfrBnVS-LsqakA');
         }
-    </script>
+      });
 
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA63CNm-zvUpJSoCvKIofJjTJbMDQ3VglU&callback=initMap">
-        </script>
+      var focus = {lat: -25.363, lng: 131.044};
+      var title = "";
+          {% for post in site.posts limit:1 %}
+      focus.lat = {{post.latitude}};
+      focus.lng = {{post.longitude}};
+      title = "{{post.title}}";
+          {% endfor %}
+
+      var Cupertino = new mapkit.CoordinateRegion(
+        new mapkit.Coordinate(focus.lat, focus.lng),
+        new mapkit.CoordinateSpan(0.167647972, 0.354985255)
+      );
+
+      // Create the map and style it
+      var map = new mapkit.Map("map");
+      map.region = Cupertino;
+      map.colorScheme = mapkit.Map.ColorSchemes.Dark;
+      map.showsUserLocation = false;
+      map.showsUserLocationControl = true;
+
+
+      var posts = [];
+      {% for post in site.posts %}
+      posts.push({
+          title: "{{post.title}}",
+          preview: "{{post.preview}}",
+          lat: {{post.latitude}},
+          lng: {{post.longitude}},
+          url: "{{site.baseurl}}{{post.url}}"
+      });
+      {% endfor %}
+
+      for (i in posts) {
+        // Grab the relevant info from the post
+        let post = posts[i];
+        let latLng = {
+            lat: post.lat,
+            lng: post.lng
+        }
+        title = post.title;
+
+        // Create the callout
+        const callout = {
+          calloutElementForAnnotation: (annotation) => {
+            let div = document.createElement('div');
+            div.className = 'landmark';
+            div.innerHTML = `<h1>${post.title}</h1><section><p class="phone">${post.preview}</p><p class="homepage"><a href="${post.url}">Read now</a></p></section>`;
+            return div;
+          }
+        }
+
+        // Create the annotation
+        const coordinates = new mapkit.Coordinate(latLng.lat, latLng.lng);
+        const annotation = new mapkit.MarkerAnnotation(coordinates, {
+          color: '#C92237',
+          title: post.title,
+          subtitle: post.preview,
+          callout: callout
+        });
+
+        map.addAnnotation(annotation);
+      }
+
+      map.annotations[0].selected = true;
+    </script>
 </body>
 
 </html>

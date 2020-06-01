@@ -19,7 +19,7 @@ body {
 
 #header {
     height: 88px;
-    background-color: #222;
+    background-color: #11161E;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,7 +30,7 @@ body {
     height: 100%;
     flex-grow: 0;
     flex-shrink: 0;
-    background-color: #1A263A;
+    background-color: #080B0F;
 }
 
 #right-panel {
@@ -72,13 +72,13 @@ body {
 
 #divider {
     height: 1px;
-    background-color: #aaa;
+    background-color: #000;
     margin-top: 8px;
 }
 
 #vert-divider {
     width: 1px;
-    background-color: #aaa;
+    background-color: #000;
 }
 
 li {
